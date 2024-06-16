@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import ReduxWrapper from "@/setup/redux/ReduxWrapper";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,8 +16,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
-    </html>
+    <ReduxWrapper>
+      <html lang="en" suppressHydrationWarning={true}>
+        <body className={`${inter.className} bg-slate-900 text-slate-100`}>
+          {children}
+        </body>
+      </html>
+    </ReduxWrapper>
   );
 }
