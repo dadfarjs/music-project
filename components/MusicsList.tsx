@@ -6,7 +6,6 @@ import { Music } from "@/app/types/music";
 import { setFilterMusic, setMusics } from "@/setup/redux/slices/musicSlice";
 
 import dynamic from "next/dynamic";
-import { Input } from "@headlessui/react";
 import { RootState } from "@/setup/redux/store";
 import { useEffect } from "react";
 
@@ -34,7 +33,7 @@ const MusicList = ({ musics }: Music[] | undefined) => {
   return (
     <>
       <div className="w-full max-w-md p-8">
-        <Input
+        <input
           name="search"
           type="text"
           placeholder="Search"
