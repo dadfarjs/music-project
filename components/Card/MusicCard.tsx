@@ -19,8 +19,8 @@ const variants = {
 const MusicCard = ({ music, index }: Props) => {
   const gridRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
-    container: gridRef, // remove this if your container is not fixed height
-    offset: ['start start', 'end start'], // remove this if your container is not fixed height
+    container: gridRef,
+    offset: ['start start', 'end start'],
   });
 
   const translateFirst = useTransform(scrollYProgress, [0, 1], [0, -200]);
@@ -29,7 +29,7 @@ const MusicCard = ({ music, index }: Props) => {
     <div className="static w-full items-start overflow-y-auto" ref={gridRef}>
       <Link href={`musics/${music?.id}`}>
         <motion.div
-          style={{ y: translateFirst }} // Apply the translateY motion value here
+          style={{ y: translateFirst }}
           key={'grid-1' + index}
           variants={variants}
           initial="hidden"

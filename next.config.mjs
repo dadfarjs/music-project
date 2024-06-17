@@ -17,7 +17,7 @@ const nextConfig = {
     ],
   },
   env: {
-    BASE_URL: process.env.BASE_URL || 'http://localhost:3000', // Ensure this is set correctly
+    BASE_URL: process.env.BASE_URL || 'http://localhost:3000',
   },
 };
 
