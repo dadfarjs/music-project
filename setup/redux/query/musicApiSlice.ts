@@ -1,18 +1,18 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import type { Action, PayloadAction } from "@reduxjs/toolkit";
-import { HYDRATE } from "next-redux-wrapper";
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import type { Action, PayloadAction } from '@reduxjs/toolkit';
+import { HYDRATE } from 'next-redux-wrapper';
 
-import { Music } from "@/app/types/music";
+import { Music } from '@/types/music';
 
-const baseUrl = process.env.BASE_URL || "http://localhost:3000";
+const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
 
 function isHydrateAction(action: Action): action is PayloadAction<any> {
   return action.type === HYDRATE;
 }
 
 export const musicApiSlice = createApi({
-  reducerPath: "musicApi",
-  tagTypes: ["Music"],
+  reducerPath: 'musicApi',
+  tagTypes: ['Music'],
   baseQuery: fetchBaseQuery({ baseUrl: `${baseUrl}/api` }),
   extractRehydrationInfo(action, { reducerPath }): any {
     if (isHydrateAction(action)) {
@@ -22,10 +22,10 @@ export const musicApiSlice = createApi({
   endpoints: (builder) => ({
     getAllMusics: builder.query({
       query: () => ({
-        url: "/musics",
-        method: "GET",
+        url: '/musics',
+        method: 'GET',
       }),
-      providesTags: [{ type: "Music", id: "LIST" }],
+      providesTags: [{ type: 'Music', id: 'LIST' }],
       keepUnusedDataFor: 2,
     }),
   }),

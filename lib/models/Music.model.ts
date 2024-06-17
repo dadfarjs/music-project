@@ -1,14 +1,31 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const Schema = new mongoose.Schema({
-  music: {
-    id: String,
-    title: String,
-    image: String,
-    artist_name: String,
-    album_name: String,
+  title: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  image: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  artist_name: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  album_name: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  id: {
+    type: String,
+    required: true,
+    trim: true,
   },
 });
 
-export const MusicModel =
-  mongoose.models.music || mongoose.model("music", Schema);
+export const MusicModel = mongoose.models.music || mongoose.model('music', Schema);
