@@ -1,12 +1,10 @@
-import { fetchMusics } from "../action";
+import { fetchMusics } from '../action';
 
 const Musics = async () => {
   const data = await fetchMusics();
 
   return (
-    <main className="flex flex-col justify-center items-center max-w-5xl mx-auto">
-      {data}
-    </main>
+    <main className="mx-auto flex max-w-5xl flex-col items-center justify-center">{data}</main>
   );
 };
 

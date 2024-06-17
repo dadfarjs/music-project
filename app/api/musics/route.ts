@@ -1,10 +1,13 @@
-import { NextResponse } from "next/server";
-import type { NextApiRequest, NextApiResponse } from "next";
-import { musics } from "@/app/_data";
+import { NextResponse } from 'next/server';
+import { ConnectDB } from '@/lib/models/db.config';
+import { musics } from '@/constants/_data';
+import { MusicModel } from '@/lib/models/Music.model';
 
-export const GET = async (
-  request: NextApiRequest,
-  response: NextApiResponse
-) => {
+ConnectDB();
+
+export const GET = async () => {
+  const AllMusics = await MusicModel.find({});
+  console.log(AllMusics?.length);
+  console.log(AllMusics);
   return NextResponse.json(musics);
 };

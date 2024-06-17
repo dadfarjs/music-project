@@ -1,5 +1,5 @@
-import { Dispatch } from "redux";
-import { musicApiSlice } from "./query/musicApiSlice";
+import { Dispatch } from 'redux';
+import { musicApiSlice } from './query/musicApiSlice';
 
 export const queryMiddlewares = [musicApiSlice.middleware];
 

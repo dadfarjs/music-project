@@ -1,5 +1,5 @@
-import { Music } from "@/app/types/music";
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { Music } from '@/types/music';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 interface MuscisState {
   allMusics: Music[];
@@ -12,7 +12,7 @@ const initialState: MuscisState = {
 };
 
 const musicSlice = createSlice({
-  name: "musicSliceName",
+  name: 'musicSliceName',
   initialState: initialState,
   reducers: {
     startCall: (state) => {
@@ -26,7 +26,7 @@ const musicSlice = createSlice({
     setFilterMusic(state, action: PayloadAction<string>) {
       const searchTerm = action.payload.toLowerCase();
       const filteredMusics = state.allMusics.filter((music) =>
-        music.title.toLowerCase().includes(searchTerm)
+        music.title.toLowerCase().includes(searchTerm),
       );
       state.filteredMusics = filteredMusics;
     },

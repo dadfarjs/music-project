@@ -1,14 +1,12 @@
-"use server";
+'use server';
 
-import { musicApiSlice } from "@/setup/redux/query/musicApiSlice";
-import { store } from "@/setup/redux/store";
-import type { Music } from "./types/music";
-import MusicList from "@/components/MusicsList";
+import { musicApiSlice } from '@/setup/redux/query/musicApiSlice';
+import { store } from '@/setup/redux/store';
+import type { Music } from '@/types/music';
+import MusicList from '@/components/List/MusicsList';
 
-const fetchRTKMusics = async (querySearch?: string) => {
-  const musics = (
-    await store.dispatch(musicApiSlice.endpoints.getAllMusics.initiate(""))
-  )?.data;
+const fetchRTKMusics = async () => {
+  const musics = (await store.dispatch(musicApiSlice.endpoints.getAllMusics.initiate('')))?.data;
   return musics;
 };
 
