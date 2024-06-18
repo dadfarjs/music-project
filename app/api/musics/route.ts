@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
-import { ConnectDB } from '@/lib/models/db.config';
+import { ConnectDB } from '@/lib/mongo/db.config';
 import { musics } from '@/constants/_data';
-import { MusicModel } from '@/lib/models/Music.model';
+import { MusicModel } from '@/lib/mongo/Music.model';
 
 ConnectDB();
 

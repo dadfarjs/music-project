@@ -1,7 +1,7 @@
 'use server';
 
-import { musicApiSlice } from '@/setup/redux/query/musicApiSlice';
-import { store } from '@/setup/redux/store';
+import { musicApiSlice } from '@/lib/redux/query/musicApiSlice';
+import { store } from '@/lib/redux/store';
 import type { Music } from '@/types/music';
 import MusicList from '@/components/List/MusicsList';
 

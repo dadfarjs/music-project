@@ -3,10 +3,10 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Music } from '@/types/music';
 
-import { setFilterMusic, setMusics } from '@/setup/redux/slices/musicSlice';
+import { setFilterMusic, setMusics } from '@/lib/redux/slices/musicSlice';
 
 import dynamic from 'next/dynamic';
-import { RootState } from '@/setup/redux/store';
+import { RootState } from '@/lib/redux/store';
 import { useEffect } from 'react';
 import { Input } from '../ui/Input';
 

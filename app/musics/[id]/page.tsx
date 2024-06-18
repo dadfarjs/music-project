@@ -1,7 +1,7 @@
 'use client';
 
 import { Music } from '@/types/music';
-import { RootState } from '@/setup/redux/store';
+import { RootState } from '@/lib/redux/store';
 import { useParams, useRouter } from 'next/navigation';
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';

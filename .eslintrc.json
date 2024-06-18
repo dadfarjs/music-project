@@ -15,7 +15,12 @@
   "rules": {
     "react/react-in-jsx-scope": "off",
     "quotes": ["error", "single", { "allowTemplateLiterals": true }],
-    "prettier/prettier": "error",
-    "no-console": "error"
+    "no-console": "error",
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      },
+    ],
   }
 }

@@ -8,3 +8,5 @@ export interface Music {
   image?: File;
   album_name?: string;
 }
+
+export type FormMusic = Omit<Music, 'id'>;
