@@ -11,7 +11,7 @@ import { useEffect } from 'react';
 import { Input } from '../ui/Input';
 
 const DynamicMusicCard = dynamic(() => import('../Card/MusicCard'), {
-  loading: () => <p className="p-8 text-center">Loading...</p>,
+  loading: () => <p className='p-8 text-center'>Loading...</p>,
 });
 
 const MusicList = ({ musics }: Music[] | undefined) => {
@@ -31,10 +31,10 @@ const MusicList = ({ musics }: Music[] | undefined) => {
   };
   return (
     <>
-      <div className="w-full max-w-md p-8">
-        <Input onChange={handleInputFilterMusic} placeholder="Search" name="search" />
+      <div className='w-full max-w-md p-8'>
+        <Input onChange={handleInputFilterMusic} placeholder='Search' name='search' />
       </div>
-      <div className="mx-auto grid w-full max-w-5xl grid-cols-1 items-start gap-10 px-10 py-10 md:grid-cols-2 lg:grid-cols-3">
+      <div className='mx-auto grid w-full max-w-5xl grid-cols-1 items-start gap-10 px-10 py-10 md:grid-cols-2 lg:grid-cols-3'>
         {filteredMusics?.map((item: Music, index: number) => (
           <DynamicMusicCard key={item.id} music={item} index={index} />
         ))}

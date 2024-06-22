@@ -3,9 +3,9 @@ export interface Music {
   title: string;
   artist_name: string;
   track?: File;
-  track_file?: string;
-  image_link?: string;
+  track_link?: string;
   image?: File;
+  image_link?: string;
   album_name?: string;
 }
 

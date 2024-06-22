@@ -17,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <ReduxWrapper>
-      <html lang="en" suppressHydrationWarning={true}>
+      <html lang='en' suppressHydrationWarning={true}>
         <body className={`${inter.className} bg-slate-900 text-slate-100`}>{children}</body>
       </html>
     </ReduxWrapper>
