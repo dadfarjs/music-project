@@ -1,6 +1,6 @@
 'use client';
 
-import FormMusic from './formMusic';
+import FormMusic from './FormMusic';
 import { FormProvider, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { MusicSchema, musicSchema } from '@/types/musicSchema';

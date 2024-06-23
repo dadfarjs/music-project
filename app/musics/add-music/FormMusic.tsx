@@ -5,14 +5,20 @@ import RadioField from '@/components/ui/RadioField';
 import { FormMusic as FormMusicType } from '@/types/music';
 import { RadioGroup } from '@headlessui/react';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
-import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
+import { useCallback, useState } from 'react';
+import { useDropzone } from 'react-dropzone';
+import { SubmitHandler, useForm } from 'react-hook-form';
+
+import { default as NextImage } from 'next/image';
 
 const FormMusic = () => {
   const methods = useForm<FormMusicType>();
   const route = useRouter();
 
-  let [selected, setSelected] = useState<string>('track_link');
+  const [selected, setSelected] = useState<string>('track_link');
+  const [file, setFile] = useState<string | null>(null);
+  const [fileType, setFileType] = useState<string | null>(null);
+  const [dimensions, setDimensions] = useState<{ width: number; height: number } | null>(null);
 
   const handleCreateFormSubmit: SubmitHandler<FormMusicType> = async (data) => {
     // await createTodoMutation.mutate(data);
@@ -22,6 +28,39 @@ const FormMusic = () => {
   const handleRotePage = () => {
     route.push('/musics');
   };
+
+  const onDrop = useCallback((acceptedFiles: File[]) => {
+    const file = acceptedFiles[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const base64String = e.target?.result as string;
+        setFile(base64String);
+        setFileType(file.type);
+
+        if (file.type.includes('image/')) {
+          const img = new Image();
+          img.onload = () => {
+            setDimensions({ width: img.width, height: img.height });
+          };
+          img.src = base64String;
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+  }, []);
+
+  const { getRootProps, getInputProps } = useDropzone({
+    onDrop,
+    accept: {
+      'image/png': ['.png'],
+      'image/jpg': ['.jpg'],
+      'image/jpeg': ['.jpeg'],
+      'audio/mp3': ['.mp3'],
+      'application/pdf': ['.pdf'],
+    },
+  });
+
   return (
     <form
       onSubmit={methods.handleSubmit(handleCreateFormSubmit)}
@@ -51,7 +90,33 @@ const FormMusic = () => {
             />
           )}
           {selected === 'track_file' && (
-            <Input type='file' placeholder='Select a music file' {...methods.register('track')} />
+            <div {...getRootProps()} style={dropzoneStyle}>
+              <input {...getInputProps()} />
+              {file ? (
+                fileType?.startsWith('image') && dimensions ? (
+                  <NextImage
+                    src={file}
+                    alt='Selected'
+                    width={dimensions.width}
+                    height={dimensions.height}
+                    style={{ borderRadius: '.5rem', maxHeight: 300 }}
+                  />
+                ) : fileType?.startsWith('video/') ? (
+                  <video width='320' height='240' aria-label='Video player' controls preload='none'>
+                    <source src={file} type='video/mp4' />
+                    Your browser does not support the video tag.
+                  </video>
+                ) : // <video src={file} controls style={{ maxHeight: 300 }} />
+                fileType?.startsWith('audio/') ? (
+                  <audio src={file} controls style={{ width: '100%' }} />
+                ) : (
+                  <embed src={file} type='application/pdf' width='100%' height='600px' />
+                )
+              ) : (
+                <p>Drop an image, video or audio file here, or click to select one</p>
+              )}
+            </div>
+            // <Input type='file' placeholder='Select a music file' {...methods.register('track')} />
           )}
         </div>
       </div>
@@ -72,6 +137,14 @@ const FormMusic = () => {
       </div>
     </form>
   );
+};
+
+const dropzoneStyle = {
+  border: '2px dashed #0087F7',
+  borderRadius: '5px',
+  padding: '20px',
+  textAlign: 'center',
+  cursor: 'pointer',
 };
 
 export default FormMusic;
