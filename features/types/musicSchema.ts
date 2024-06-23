@@ -1,4 +1,4 @@
-import { emailPattern } from '@/constants/patterns';
+import { emailPattern } from '@/features/constants/patterns';
 import { z } from 'zod';
 
 export const musicSchema = z.object({

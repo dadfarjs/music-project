@@ -3,7 +3,7 @@
 import { useScroll, useTransform, motion } from 'framer-motion';
 import { useRef } from 'react';
 import Image from 'next/image';
-import type { Music } from '@/types/music';
+import type { Music } from '@/features/types/music';
 import Link from 'next/link';
 
 type Props = {

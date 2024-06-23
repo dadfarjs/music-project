@@ -1,4 +1,4 @@
-import { Music } from '@/types/music';
+import { Music } from '@/features/types/music';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 interface MuscisState {

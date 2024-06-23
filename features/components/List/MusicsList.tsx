@@ -1,12 +1,12 @@
 'use client';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { Music } from '@/types/music';
+import { Music } from '@/features/types/music';
 
-import { setFilterMusic, setMusics } from '@/lib/redux/slices/musicSlice';
+import { setFilterMusic, setMusics } from '@/features/lib/redux/slices/musicSlice';
 
 import dynamic from 'next/dynamic';
-import { RootState } from '@/lib/redux/store';
+import { RootState } from '@/features/lib/redux/store';
 import { useEffect } from 'react';
 import { Input } from '../ui/Input';
 

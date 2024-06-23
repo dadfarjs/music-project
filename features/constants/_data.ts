@@ -1,4 +1,4 @@
-import { Music } from '@/types/music';
+import { Music } from '@/features/types/music';
 
 export const musics: Music[] = [
   {

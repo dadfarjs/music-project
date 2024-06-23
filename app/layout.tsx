@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
-import ReduxWrapper from '@/lib/redux/ReduxWrapper';
+import ReduxWrapper from '@/features/lib/redux/ReduxWrapper';
 
 const inter = Inter({ subsets: ['latin'] });
 
